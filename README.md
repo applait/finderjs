@@ -174,3 +174,6 @@ finder.events.addListener("error", function (message) {
 ## Credits and attribution
 
  - [EventEmitter](https://github.com/Wolfy87/EventEmitter) by Oliver Caldwell. Used under the MIT License.
+
+
+ ~~ Built with love by [Applait](http://applait.com). ~~
