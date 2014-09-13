@@ -43,7 +43,7 @@ Applait.Finder = function (options) {
     this.minSearchLength = (options.minSearchLength && typeof options.minSearchLength === "number") ?
         options.minSearchLength : 3;
 
-    this.debugMode = (options.debugMode && options.debugMode === true) ? true : false;
+    this.debugMode = options.debugMode ? true : false;
 
     this.storages = navigator.getDeviceStorages && navigator.getDeviceStorages(this.type);
 
@@ -69,8 +69,8 @@ Applait.Finder.prototype.search = function (needle) {
         if (context.debugMode) {
             console.log("Search cancelled. Less than " + context.minSearchLength +  " characters search string");
         }
-        context.events.emitEvent("searchCancelled", ["Search string should be at least " + context.minSearchLength
-                                                     + " characters"]);
+        context.events.emitEvent("searchCancelled",
+                                 ["Search string should be at least " + context.minSearchLength + " characters"]);
         return null;
     }
 
@@ -138,4 +138,5 @@ Applait.Finder.prototype.splitname = function (filename) {
     filename = filename.split(/[\\/]/);
 
 return { "name": filename.pop(), "path": filename.join("/") };
+
 };
