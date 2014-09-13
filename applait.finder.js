@@ -75,7 +75,9 @@ Applait.Finder.prototype.search = function (needle) {
     }
 
     if (context.storages.length < 1) {
-        if (context.debugMode) console.log("empty", needle);
+        if (context.debugMode) {
+            console.log("empty", needle);
+        }
         context.events.emitEvent("empty", [needle]);
         return null;
     }
@@ -87,7 +89,9 @@ Applait.Finder.prototype.search = function (needle) {
 
         var cursor = storage.enumerate();
 
-        if (context.debugMode) console.log("storageSearchBegin", storage.storageName, needle);
+        if (context.debugMode) {
+            console.log("storageSearchBegin", storage.storageName, needle);
+        }
         context.events.emitEvent("storageSearchBegin", [storage.storageName, needle]);
 
         cursor.onsuccess = function () {
@@ -99,25 +103,33 @@ Applait.Finder.prototype.search = function (needle) {
 
                 if (fileinfo.name.indexOf(needle) > -1) {
                     filematchcount++;
-                    if (context.debugMode) console.log("fileFound", file, fileinfo, storage.storageName);
+                    if (context.debugMode) {
+                        console.log("fileFound", file, fileinfo, storage.storageName);
+                    }
                     context.events.emitEvent("fileFound", [file, fileinfo, storage.storageName]);
                 }
 
                 if (!this.done) {
                     this.continue();
                 } else {
-                    if (context.debugMode) console.log("searchComplete", storage.storageName, needle, filematchcount);
+                    if (context.debugMode) {
+                        console.log("searchComplete", storage.storageName, needle, filematchcount);
+                    }
                     context.events.emitEvent("searchComplete", [storage.storageName, needle, filematchcount]);
                 }
             } else {
-                if (context.debugMode) console.log("searchComplete", storage.storageName, needle, filematchcount);
+                if (context.debugMode) {
+                    console.log("searchComplete", storage.storageName, needle, filematchcount);
+                }
                 context.events.emitEvent("searchComplete", [storage.storageName, needle, filematchcount]);
             }
 
         };
 
         cursor.onerror = function () {
-            if (context.debugMode) console.log("Error accessing device storage '" + storage.storageName + "'", this.error);
+            if (context.debugMode) {
+                console.log("Error accessing device storage '" + storage.storageName + "'", this.error);
+            }
             context.events.emitEvent('error', ["Error accessing device storage '" + storage.storageName + "'", this.error]);
         };
 
@@ -137,6 +149,6 @@ Applait.Finder.prototype.search = function (needle) {
 Applait.Finder.prototype.splitname = function (filename) {
     filename = filename.split(/[\\/]/);
 
-return { "name": filename.pop(), "path": filename.join("/") };
+    return { "name": filename.pop(), "path": filename.join("/") };
 
 };
