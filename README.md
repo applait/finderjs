@@ -29,8 +29,10 @@ Create an instance of `Applait.Finder`. The constructor takes an `options` objec
  - `debugMode` : If set to `true`, enables the debug mode, which prints all activities by the library on the browser console. Default: `false`.
 
 ```js
-var finder = new Applait.Finder("sdcard");
+var finder = new Applait.Finder({ type: "sdcard", debugMode: true });
 ```
+
+**Note: for production use, keep `debugMode` turned off to save memory.**
 
 ### 2. Trigger search
 
