@@ -168,7 +168,7 @@ This event is fired when any error is faced by the search. It provides the follo
 Example:
 
 ```js
-finder.events.addListener("error", function (message) {
+finder.events.addListener("error", function (message, err) {
     // Code goes here
 });
 ```
