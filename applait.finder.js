@@ -41,7 +41,7 @@ Applait.Finder = function (options) {
     this.type = options.type || "sdcard";
 
     this.minSearchLength = (options.minSearchLength && typeof options.minSearchLength === "number") ?
-        options.minSearchLength || 3;
+        options.minSearchLength : 3;
 
     this.debugMode = (options.debugMode && options.debugMode === true) ? true : false;
 
