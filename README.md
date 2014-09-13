@@ -45,7 +45,7 @@ From this point onwards, `Finder` raises events for each action.
 The `search` method will return `null` only if the search string is smaller in length than `minSearchLength` or if no `storage` mediums are found on the device for the given storage `type`. But is not necessary because `Finder` raises an event in either case.
 
 
-### 3. Listening to events
+### 3. Listen to events
 
 To listen to events, add an event listener with a callback using `finder.events.addListener()`. Each event gets a specific set of arguments depending on the event. For example, when `search()` finds a matching file, it raises the `fileFound` event with two arguments, the `File` object and a `fileinfo` object and the storage name in which it was found:
 
