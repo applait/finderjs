@@ -56,7 +56,7 @@ Applait.Finder = function (options) {
  *
  * @memberOf Applait.Finder
  * @param {string} needle - The string to match file names from the device storage.
- * @return {null} - Only if `needle` length is less than 3 characters or if no DeviceStorages are found.
+ * @return {null} - Only if `needle` length is less than `minSearchLength` or if no DeviceStorages are found.
  */
 Applait.Finder.prototype.search = function (needle) {
 
