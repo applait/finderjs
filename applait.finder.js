@@ -82,7 +82,9 @@ Applait.Finder.prototype.search = function (needle) {
         return null;
     }
 
-    if (context.debugMode) console.log("searchBegin", needle);
+    if (context.debugMode) {
+        console.log("searchBegin", needle);
+    }
     context.events.emitEvent("searchBegin", [needle]);
 
     context.storages.forEach(function (storage) {
@@ -150,5 +152,4 @@ Applait.Finder.prototype.splitname = function (filename) {
     filename = filename.split(/[\\/]/);
 
     return { "name": filename.pop(), "path": filename.join("/") };
-
 };
