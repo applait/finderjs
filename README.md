@@ -34,6 +34,10 @@ var finder = new Applait.Finder({ type: "sdcard", debugMode: true });
 
 **Note: for production use, keep `debugMode` turned off to save memory.**
 
+#### 1.1 Set permissions in `manifest.webapp`
+
+In your app's manifest, add permission for the type of `DeviceStorage` access you need. For details, see [Device Storage Permissions](https://developer.mozilla.org/en-US/docs/Web/API/Device_Storage_API#Device_storage_permissions).
+
 ### 2. Trigger search
 
 Trigger a search by calling `finder.search()` and passing it the search string.
