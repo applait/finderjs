@@ -61,7 +61,7 @@ Applait.Finder = function (options) {
 Applait.Finder.prototype.search = function (needle) {
 
     var context = this,
-    filematchcount = 0;
+        filematchcount = 0;
 
     needle = needle.trim();
 
