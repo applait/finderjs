@@ -132,7 +132,8 @@ Applait.Finder.prototype.search = function (needle) {
             if (context.debugMode) {
                 console.log("Error accessing device storage '" + storage.storageName + "'", this.error);
             }
-            context.events.emitEvent('error', ["Error accessing device storage '" + storage.storageName + "'", this.error]);
+            context.events.emitEvent('error', ["Error accessing device storage '" + storage.storageName + "'",
+                                               this.error]);
         };
 
     });
