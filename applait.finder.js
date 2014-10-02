@@ -28,6 +28,7 @@ var Applait = Applait || {};
  * - `type` : `{string}` : Can be one of `sdcard`, `music`, `pictures`, `videos`. Defaults to `sdcard`.
  * - `minSearchLength`: `{number}` : The minimum length of search string without which search will not be triggered.
  * Defaults to `3`.
+ * - `hidden`: `{boolean}` : If set to `true`, searches hidden files as well. Defaults to `false`.
  * - `debugMode`: `{boolean}` : If `true`, enables debug mode which logs all messages to the browser console. This
  * should be disabled in production mode to reduce memory footprint.
  *
@@ -40,6 +41,8 @@ Applait.Finder = function (options) {
 
     this.type = options.type || "sdcard";
 
+    this.hidden = options.hidden || false;
+
     this.minSearchLength = (options.minSearchLength && typeof options.minSearchLength === "number") ?
         options.minSearchLength : 3;
 
@@ -50,6 +53,20 @@ Applait.Finder = function (options) {
     this.events = new EventEmitter();
 
 };
+
+/**
+ * Match hidden files based on settings
+ *
+ * @param {string} filename - The filename to test
+ * @return {boolean} - `true` if file is a hidden file and if `hidden`
+ * is `true` in constructor options.
+ */
+Applait.Finder.prototype.checkhidden = function (filename) {
+    if (this.hidden && (filename.indexOf(".") === 0)) {
+        return true;
+    }
+    return false;
+}
 
 /**
  * Instantiate search
@@ -103,7 +120,7 @@ Applait.Finder.prototype.search = function (needle) {
                 var file = this.result;
                 var fileinfo = context.splitname(file.name);
 
-                if (fileinfo.name.indexOf(needle) > -1) {
+                if (fileinfo.name.indexOf(needle) > -1 && context.checkhidden(fileinfo.name)) {
                     filematchcount++;
                     if (context.debugMode) {
                         console.log("fileFound", file, fileinfo, storage.storageName);
