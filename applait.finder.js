@@ -62,11 +62,11 @@ Applait.Finder = function (options) {
  * is `true` in constructor options.
  */
 Applait.Finder.prototype.checkhidden = function (filename) {
-    if (this.hidden && (filename.indexOf(".") === 0)) {
-        return true;
+    if ((filename.indexOf(".") === 0) && this.hidden !== true) {
+        return false;
     }
-    return false;
-}
+    return true;
+};
 
 /**
  * Instantiate search
