@@ -27,6 +27,7 @@ Create an instance of `Applait.Finder`. The constructor takes an `options` objec
  - `type` : Can be one of `sdcard`, `pictures`, `music`, `videos`. Default: `sdcard`.
  - `minSearchLength` : A number representing the minimum length of the search string without which search will not be triggered. Default: `3`.
  - `hidden` : If set to `true`, excludes hidden files from search. Default: `false`.
+ - `caseSensitive` : If set to `true`, makes search case sensitive. Default: `false`.
  - `debugMode` : If set to `true`, enables the debug mode, which prints all activities by the library on the browser console. Default: `false`.
 
 ```js

@@ -29,6 +29,7 @@ var Applait = Applait || {};
  * - `minSearchLength`: `{number}` : The minimum length of search string without which search will not be triggered.
  * Defaults to `3`.
  * - `hidden`: `{boolean}` : If set to `true`, searches hidden files as well. Defaults to `false`.
+ * - `caseSensitive` : `{boolean}` : If set to `true`, searches will be case sensitive. Defaults to `false`.
  * - `debugMode`: `{boolean}` : If `true`, enables debug mode which logs all messages to the browser console. This
  * should be disabled in production mode to reduce memory footprint.
  *
@@ -42,6 +43,8 @@ Applait.Finder = function (options) {
     this.type = options.type || "sdcard";
 
     this.hidden = options.hidden || false;
+
+    this.casesensitive = options.caseSensitive || false;
 
     this.minSearchLength = (options.minSearchLength && typeof options.minSearchLength === "number") ?
         options.minSearchLength : 3;
@@ -119,8 +122,9 @@ Applait.Finder.prototype.search = function (needle) {
 
                 var file = this.result;
                 var fileinfo = context.splitname(file.name);
+                var searchname = context.casesensitive ? fileinfo.name : fileinfo.name.toLowerCase();
 
-                if (fileinfo.name.indexOf(needle) > -1 && context.checkhidden(fileinfo.name)) {
+                if (searchname.indexOf(needle) > -1 && context.checkhidden(searchname)) {
                     filematchcount++;
                     if (context.debugMode) {
                         console.log("fileFound", file, fileinfo, storage.storageName);
