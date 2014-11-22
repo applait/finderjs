@@ -218,3 +218,14 @@ Applait.Finder.prototype.log = function (message, args) {
 };
 
 
+/**
+ * Match name
+ *
+ * @memberOf Applait.Finder
+ * @param {string} name - Filename
+ * @return {boolean}
+ */
+Applait.Finder.prototype.matchname = function (name) {
+    name = !this.casesensitive ? name.trim().toLowerCase() : name.trim();
+    return (name.indexOf(this.searchkey) > -1 && this.checkhidden(name));
+};
