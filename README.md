@@ -58,7 +58,7 @@ The `search` method will return `null` only if the search string is smaller in l
 To listen to events, add an event listener with a callback using `finder.events.addListener()`. Each event gets a specific set of arguments depending on the event. For example, when `search()` finds a matching file, it raises the `fileFound` event with two arguments, the `File` object and a `fileinfo` object and the storage name in which it was found:
 
 ```js
-finder.events.addListener("fileFound", function (file, fileinfo, storageName) {
+finder.on("fileFound", function (file, fileinfo, storageName) {
     console.log("Found file " + fileinfo.name + " at " + fileinfo.path + " in " + storageName, file);
 }
 ```
@@ -80,7 +80,7 @@ This event is fired each time when a file is matched during the search. It provi
 Example:
 
 ```js
-finder.events.addListener("fileFound", function (file, fileinfo, storageName) {
+finder.on("fileFound", function (file, fileinfo, storageName) {
     // Code goes here
 });
 ```
@@ -94,7 +94,7 @@ This event is fired when search is started. It provides the following arguments:
 Example:
 
 ```js
-finder.events.addListener("searchBegin", function (needle) {
+finder.on("searchBegin", function (needle) {
     // Code goes here
 });
 ```
@@ -113,16 +113,32 @@ This event provides the following arguments:
 Example:
 
 ```js
-finder.events.addListener("storageSearchBegin", function (storageName, needle) {
+finder.on("storageSearchBegin", function (storageName, needle) {
+    // Code goes here
+});
+```
+
+### storageSearchComplete
+
+This event is event when a search is completed for a particular [DeviceStorage](https://developer.mozilla.org/en-US/docs/Web/API/DeviceStorage). It can be raised multiple times per search, depending on the number of `storage` locations available.
+
+This event provides the following arguments:
+
+ - `storageName` - The internal name of the storage space.
+ - `needle` - The search string.
+
+Example:
+
+```js
+finder.on("storageSearchComplete", function (storageName, needle) {
     // Code goes here
 });
 ```
 
 ### searchComplete
 
-This event is fired when search has completed for a particular storage location. It provides the following arguments:
+This event is fired when the entire search has completed. It is raised only once for each search. It provides the following arguments:
 
- - `storageName` - The internal name of the storage space.
  - `needle` - The search string.
  - `filematchcount` - The number of files matched in this search.
 
@@ -131,7 +147,7 @@ Note that `searchComplete` can be fired multiple times during a single `search()
 Example:
 
 ```js
-finder.events.addListener("searchComplete", function (storageName, needle, filematchcount) {
+finder.on("searchComplete", function (needle, filematchcount) {
     // Code goes here
 });
 ```
@@ -145,7 +161,7 @@ This event is fired when a search is cancelled. It provides the following argume
 Example:
 
 ```js
-finder.events.addListener("searchCancelled", function (message) {
+finder.on("searchCancelled", function (message) {
     // Code goes here
 });
 ```
@@ -159,7 +175,7 @@ This event is fired when there is no storage medium available for the provided s
 Example:
 
 ```js
-finder.events.addListener("empty", function (needle) {
+finder.on("empty", function (needle) {
     // Code goes here
 });
 ```
@@ -174,10 +190,19 @@ This event is fired when any error is faced by the search. It provides the follo
 Example:
 
 ```js
-finder.events.addListener("error", function (message, err) {
+finder.on("error", function (message, err) {
     // Code goes here
 });
 ```
+
+## Properties
+
+Here are some useful properties of the `Applait.Finder` class:
+
+- `this.filematchcount` : Number of files matched in latest search.
+- `this.searchkey` : Search key (needle) of latest search.
+- `this.storagesearchcount` : Number of storage locations already searched in the current search.
+- `this.options` : Options object passed to the constructor.
 
 ## Credits and attribution
 
