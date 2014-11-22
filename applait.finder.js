@@ -89,76 +89,66 @@ Applait.Finder.prototype.search = function (needle) {
     self.reset();
     self.searchkey = !self.casesensitive ? needle.trim().toLowerCase() : needle.trim();
 
-    if (needle.length < context.minSearchLength) {
-        if (context.debugMode) {
-            console.log("Search cancelled. Less than " + context.minSearchLength +  " characters search string");
-        }
-        context.events.emitEvent("searchCancelled",
-                                 ["Search string should be at least " + context.minSearchLength + " characters"]);
+    if (self.searchkey.length < self.minsearchlength) {
+        self.log("searchCancelled",
+                 ["Search string should be at least " + self.minsearchlength + " characters"]);
+        self.emitEvent("searchCancelled",
+                       ["Search string should be at least " + self.minsearchlength + " characters"]);
         return null;
     }
 
-    if (context.storages.length < 1) {
-        if (context.debugMode) {
-            console.log("empty", needle);
-        }
-        context.events.emitEvent("empty", [needle]);
+    if (self.storagecount() < 1) {
+        self.log("empty", [self.searchkey]);
+        self.emitEvent("empty", [self.searchkey]);
         return null;
     }
 
-    if (context.debugMode) {
-        console.log("searchBegin", needle);
-    }
-    context.events.emitEvent("searchBegin", [needle]);
+    self.log("searchBegin", [self.searchkey]);
+    self.emitEvent("searchBegin", [self.searchkey]);
 
-    context.storages.forEach(function (storage) {
+    self.storages.forEach(function (storage) {
 
         var cursor = storage.enumerate();
 
-        if (context.debugMode) {
-            console.log("storageSearchBegin", storage.storageName, needle);
-        }
-        context.events.emitEvent("storageSearchBegin", [storage.storageName, needle]);
+        self.log("storageSearchBegin", [storage.storageName, self.searchkey]);
+        self.emitEvent("storageSearchBegin", [storage.storageName, self.searchkey]);
 
         cursor.onsuccess = function () {
 
             if (this.result) {
 
                 var file = this.result;
-                var fileinfo = context.splitname(file.name);
-                var searchname = context.casesensitive ? fileinfo.name : fileinfo.name.toLowerCase();
+                var fileinfo = self.splitname(file.name);
 
-                if (searchname.indexOf(needle) > -1 && context.checkhidden(searchname)) {
-                    filematchcount++;
-                    if (context.debugMode) {
-                        console.log("fileFound", file, fileinfo, storage.storageName);
-                    }
-                    context.events.emitEvent("fileFound", [file, fileinfo, storage.storageName]);
+                if (self.matchname(fileinfo.name)) {
+                    self.filematchcount++;
+                    self.log("fileFound", [file, fileinfo, storage.storageName]);
+                    self.emitEvent("fileFound", [file, fileinfo, storage.storageName]);
                 }
-
                 if (!this.done) {
                     this.continue();
                 } else {
-                    if (context.debugMode) {
-                        console.log("searchComplete", storage.storageName, needle, filematchcount);
-                    }
-                    context.events.emitEvent("searchComplete", [storage.storageName, needle, filematchcount]);
+                    self.searchcompletecount++;
+                    self.log("storageSearchComplete", [storage.storageName, self.searchkey]);
+                    self.emitEvent("storageSearchComplete", [storage.storageName, self.searchkey]);
                 }
             } else {
-                if (context.debugMode) {
-                    console.log("searchComplete", storage.storageName, needle, filematchcount);
-                }
-                context.events.emitEvent("searchComplete", [storage.storageName, needle, filematchcount]);
+                self.searchcompletecount++;
+                self.log("storageSearchComplete", [storage.storageName, self.searchkey]);
+                self.emitEvent("storageSearchComplete", [storage.storageName, self.searchkey]);
+            }
+
+            if (self.searchcompletecount === self.storagecount()) {
+                self.log("searchComplete", [self.searchkey, self.filematchcount]);
+                self.emitEvent("searchComplete", [self.searchkey, self.filematchcount]);
             }
 
         };
 
         cursor.onerror = function () {
-            if (context.debugMode) {
-                console.log("Error accessing device storage '" + storage.storageName + "'", this.error);
-            }
-            context.events.emitEvent('error', ["Error accessing device storage '" + storage.storageName + "'",
-                                               this.error]);
+            self.log("error", ["Error accessing device storage '" + storage.storageName + "'", this.error]);
+            self.emitEvent('error', ["Error accessing device storage '" + storage.storageName + "'",
+                                     this.error]);
         };
 
     });
