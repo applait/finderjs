@@ -53,8 +53,12 @@ Applait.Finder = function (options) {
 
     this.storages = navigator.getDeviceStorages && navigator.getDeviceStorages(this.type);
 
+    this.searchcompletecount = 0;
     this.events = new EventEmitter();
 
+    this.filematchcount = 0;
+
+    this.searchkey = "";
 };
 
 /**
