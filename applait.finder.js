@@ -1,4 +1,5 @@
 /**
+ * @file
  * File picker and finder for device storages on Firefox OS devices
  *
  * This library provides an easy-to-use asynchronous interface for other Firefox OS apps to search for files
@@ -10,18 +11,35 @@
  * This library depends on [EventEmitter](https://github.com/Wolfy87/EventEmitter) by Wolfy87, included with the
  * package.
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @license The MIT License (MIT)
- *
- * Copyright (c) 2014 Applait Technologies LLP
+ * @author Applait Technologies LLP
+ * @copyright Copyright (c) 2014 Applait Technologies LLP
  */
 
+/**
+ * Core Applait namespace for Applait libraries.
+ *
+ * @namespace
+ */
 var Applait = Applait || {};
 
 /**
  * Core `Finder` class. Provides the constructor for applications to instantiate.
  *
+ * @memberOf Applait
  * @constructor
+ *
+ * @property {object} options - Easy access to `options` passed in constructor argument.
+ * @property {string} type - The type of DeviceStorage specified.
+ * @property {boolean} hidden - Boolean specifying whether hidden files will be included in search or not.
+ * @property {boolean} casesensitive - Boolean specifying whether searches will be case sensitive or not.
+ * @property {boolean} debugmode - Boolean activating or deactivating debug mode.
+ * @property {array} storages - Array of device storage cursors based on `this.type`.
+ * @property {number} searchcompletecount - Number of device storages searched through in latest search.
+ * @property {number} filematchcount - Number of files found in latest search
+ * @property {string} searchkey - Search term used in last search
+ *
  * @param {object=} options - Default options for the `Finder` constructor. It can include any of the following
  * properties:
  *
@@ -81,12 +99,13 @@ Applait.Finder.prototype.checkhidden = function (filename) {
     return true;
 };
 
+
 /**
  * Instantiate search
  *
  * @memberOf Applait.Finder
  * @param {string} needle - The string to match file names from the device storage.
- * @return {null} - Only if `needle` length is less than `minSearchLength` or if no DeviceStorages are found.
+ * @return {null} - Only if `needle` length is less than `minsearchlength` or if no DeviceStorages are found.
  */
 Applait.Finder.prototype.search = function (needle) {
 
@@ -159,6 +178,7 @@ Applait.Finder.prototype.search = function (needle) {
 
     });
 };
+
 
 /**
  * Splits full file path into basename and path to directory.
