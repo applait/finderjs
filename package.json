@@ -1,0 +1,52 @@
+This repository
+
+Explore
+Gist
+Blog
+Help
+
+Kaustav Das Modak kaustavdm
+
+31
+
+747
+
+105
+
+Wolfy87/EventEmitter
+
+EventEmitter / package.json
+Oliver Caldwell Wolfy87 on 30 Sep
+Bumped version numbers to 4.2.9.
+
+1 contributor
+{
+    "name": "finderjs",
+    "version": "1.1.1",
+    "description": "Device Storage search and file picker library for Firefox OS",
+    "main": "src/applait.finder.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/applait/finderjs.git"
+    },
+    "keywords": [
+        "firefoxos",
+        "devicestorage"
+    ],
+    "author": {
+        "name": "Applait Technologies LLP",
+        "email": "ask@applait.com",
+        "url": "http://applait.com"
+    },
+    "license": "MIT",
+    "readmeFilename": "README.md",
+    "bugs": {
+        "url": "https://github.com/applait/finderjs/issues"
+    },
+    "devDependencies": {
+        "uglify-js": "*"
+    }
+}
