@@ -46,15 +46,14 @@ Applait.Finder = function (options) {
 
     this.casesensitive = options.caseSensitive || false;
 
-    this.minSearchLength = (options.minSearchLength && typeof options.minSearchLength === "number") ?
+    this.minsearchlength = (options.minSearchLength && typeof options.minSearchLength === "number") ?
         options.minSearchLength : 3;
 
-    this.debugMode = options.debugMode ? true : false;
+    this.debugmode = options.debugMode ? true : false;
 
     this.storages = navigator.getDeviceStorages && navigator.getDeviceStorages(this.type);
 
     this.searchcompletecount = 0;
-    this.events = new EventEmitter();
 
     this.filematchcount = 0;
 
