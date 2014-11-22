@@ -11,7 +11,7 @@
  * This library depends on [EventEmitter](https://github.com/Wolfy87/EventEmitter) by Wolfy87, included with the
  * package.
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @license The MIT License (MIT)
  * @author Applait Technologies LLP
  * @copyright Copyright (c) 2014 Applait Technologies LLP
