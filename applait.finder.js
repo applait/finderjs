@@ -86,7 +86,8 @@ Applait.Finder.prototype.search = function (needle) {
 
     var self = this;
 
-    needle = needle.trim();
+    self.reset();
+    self.searchkey = !self.casesensitive ? needle.trim().toLowerCase() : needle.trim();
 
     if (needle.length < context.minSearchLength) {
         if (context.debugMode) {
