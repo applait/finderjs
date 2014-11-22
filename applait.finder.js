@@ -61,6 +61,13 @@ Applait.Finder = function (options) {
     this.searchkey = "";
 };
 
+
+/**
+ * Make `Applait.Finder` inherit the `EventEmitter` prototype chain.
+ */
+Applait.Finder.prototype = new EventEmitter();
+
+
 /**
  * Match hidden files based on settings
  *
