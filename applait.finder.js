@@ -192,3 +192,14 @@ Applait.Finder.prototype.storagecount = function () {
 };
 
 
+/**
+ * Reset internals
+ *
+ * @memberOf Applait.Finder
+ */
+Applait.Finder.prototype.reset = function () {
+    this.filematchcount = 0;
+    this.searchcompletecount = 0;
+    this.searchkey = "";
+};
+
