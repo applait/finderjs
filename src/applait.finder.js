@@ -172,7 +172,7 @@ Applait.Finder.prototype.search = function (needle) {
 
         cursor.onerror = function () {
             self.log("error", ["Error accessing device storage '" + storage.storageName + "'", this.error]);
-            self.emitEvent('error', ["Error accessing device storage '" + storage.storageName + "'",
+            self.emitEvent("error", ["Error accessing device storage '" + storage.storageName + "'",
                                      this.error]);
         };
 
