@@ -55,7 +55,7 @@ The `search` method will return `null` only if the search string is smaller in l
 
 ### 3. Listen to events
 
-To listen to events, add an event listener with a callback using `finder.events.addListener()`. Each event gets a specific set of arguments depending on the event. For example, when `search()` finds a matching file, it raises the `fileFound` event with two arguments, the `File` object and a `fileinfo` object and the storage name in which it was found:
+To listen to events, add an event listener with a callback using `finder.on()`. Each event gets a specific set of arguments depending on the event. For example, when `search()` finds a matching file, it raises the `fileFound` event with two arguments, the `File` object and a `fileinfo` object and the storage name in which it was found:
 
 ```js
 finder.on("fileFound", function (file, fileinfo, storageName) {
