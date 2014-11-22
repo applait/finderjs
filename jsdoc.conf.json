@@ -1,0 +1,20 @@
+{
+    "opts": {
+        "recurse": true,
+        "destination": "./docs/",
+        "encoding": "utf8",
+        "readme": "./README.md"
+    },
+    "source": {
+        "include": ["./src/"],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    }
+}
