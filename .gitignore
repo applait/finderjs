@@ -2,3 +2,9 @@
 
 # KDE directory preferences
 .directory
+
+# Node ignores
+/node_modules/
+
+# Mac things
+.DS_Store
