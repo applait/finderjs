@@ -1,5 +1,7 @@
 # Finder library for Firefox OS
 
+[![Build Status](https://travis-ci.org/applait/finderjs.svg?branch=master)](https://travis-ci.org/applait/finderjs)
+
 This library is an interface to search and pick files from the `DeviceStorages` on Firefox OS devices. It provides an easy-to-use asynchronous interface for other Firefox OS apps to search for files on Firefox OS devices. The library is based on an event-based architecture, letting developers build beautiful asynchronous API for their apps.
 
 The `Finder` library is best used by developers looking to pick a file from `sdcard` for their apps.
@@ -8,15 +10,13 @@ This library depends on [EventEmitter](https://github.com/Wolfy87/EventEmitter) 
 
 ## Install
 
-Copy the scripts to your app's directory, e.g. in the `js` subdirectory. Load these scripts in the HTML page in this order:
-
- - `EventEmitter.min.js`
- - `applait.finder.js`
+Copy the minified script `./applait.finder.min.js` to your app's directory, e.g. in the `js` subdirectory. Add the script to the HTML page:
 
 ```html
-<script type="text/javascript" src="js/EventEmitter.min.js"></script>
-<script type="text/javascript" src="js/applait.finder.js"></script>
+<script type="text/javascript" src="js/applait.finder.min.js"></script>
 ```
+
+The minified version includes its dependencies, so you need to add just this one file to get started.
 
 ## Usage
 
