@@ -175,3 +175,16 @@ Applait.Finder.prototype.splitname = function (filename) {
 
     return { "name": filename.pop(), "path": filename.join("/") };
 };
+
+
+/**
+ * Return the number of storages being used
+ *
+ * @memberOf Applait.Finder
+ * @return {number} - The length of storages
+ */
+Applait.Finder.prototype.storagecount = function () {
+    return this.storages && this.storages.length ? this.storages.length : 0;
+};
+
+
