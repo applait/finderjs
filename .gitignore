@@ -27,3 +27,8 @@ node_modules
 
 # -- Mac things --
 .DS_Store
+
+# -- Remove docs and tmp dirs --
+/docs/
+/tmp/
+/out/
