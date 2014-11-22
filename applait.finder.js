@@ -203,3 +203,18 @@ Applait.Finder.prototype.reset = function () {
     this.searchkey = "";
 };
 
+
+/**
+ * Generic logging method, dependent on debugMode
+ *
+ * @memberOf Applait.Finder
+ * @param {string} message - A string identifying this log
+ * @param {array} args - An array of stuff to print
+ */
+Applait.Finder.prototype.log = function (message, args) {
+    if (this.debugmode) {
+        console.log(message, args);
+    }
+};
+
+
