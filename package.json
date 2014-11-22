@@ -30,6 +30,7 @@
         "jshint": "*"
     },
     "scripts": {
+        "test": "./bin/test",
         "build": "./bin/build"
     },
     "jshintConfig": {

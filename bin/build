@@ -1,10 +1,6 @@
 #!/bin/sh
 set -e;
 
-# Run JSHint
-echo "Running JSHint...";
-./node_modules/.bin/jshint src/applait.finder.js
-
 # Combine and minify javascripts
 echo "Combining and minifying JavaScripts...";
 ./node_modules/.bin/uglifyjs \

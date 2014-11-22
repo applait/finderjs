@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e;
+
+# Run JSHint
+echo "Running JSHint...";
+./node_modules/.bin/jshint src/applait.finder.js
