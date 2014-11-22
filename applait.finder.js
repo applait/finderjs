@@ -84,8 +84,7 @@ Applait.Finder.prototype.checkhidden = function (filename) {
  */
 Applait.Finder.prototype.search = function (needle) {
 
-    var context = this,
-        filematchcount = 0;
+    var self = this;
 
     needle = needle.trim();
 
