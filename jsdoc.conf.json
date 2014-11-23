@@ -1,12 +1,9 @@
 {
     "opts": {
         "recurse": true,
-        "destination": "./docs/",
-        "encoding": "utf8",
-        "readme": "./README.md"
+        "encoding": "utf8"
     },
     "source": {
-        "include": ["./src/"],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
