@@ -58,16 +58,16 @@ Applait.Finder = function (options) {
 
     this.options = options || {};
 
-    this.type = options.type || "sdcard";
+    this.type = this.options.type || "sdcard";
 
-    this.hidden = options.hidden || false;
+    this.hidden = this.options.hidden || false;
 
-    this.casesensitive = options.caseSensitive || false;
+    this.casesensitive = this.options.caseSensitive || false;
 
-    this.minsearchlength = (options.minSearchLength && typeof options.minSearchLength === "number") ?
+    this.minsearchlength = (this.options.minSearchLength && typeof this.options.minSearchLength === "number") ?
         options.minSearchLength : 3;
 
-    this.debugmode = options.debugMode ? true : false;
+    this.debugmode = this.options.debugMode ? true : false;
 
     this.storages = navigator.getDeviceStorages && navigator.getDeviceStorages(this.type);
 
