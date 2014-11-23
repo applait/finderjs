@@ -204,6 +204,41 @@ Here are some useful properties of the `Applait.Finder` class:
 - `this.storagesearchcount` : Number of storage locations already searched in the current search.
 - `this.options` : Options object passed to the constructor.
 
+## Contributing
+
+What you need to start developing FinderJS:
+
+- [npm](http://npmjs.org)
+- [grunt](http://gruntjs.com)
+- [git](http://git-scm.com)
+- A text editor
+
+### Dev environment setup
+
+Install `npm` and run:
+
+```bash
+$ npm install -g grunt-cli
+```
+
+```bash
+$ npm install
+```
+
+### Run tests and create builds
+
+To run tests:
+
+```bash
+$ npm test
+```
+
+To create minified file and generate API docs:
+
+```bash
+$ npm run build
+```
+
 ## Credits and attribution
 
  - [EventEmitter](https://github.com/Wolfy87/EventEmitter) by Oliver Caldwell. Used under the MIT License.
