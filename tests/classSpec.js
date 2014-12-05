@@ -12,7 +12,7 @@ describe("Applait.Finder class", function () {
         expect(finder).toBeDefined();
     });
 
-    it("should be a constructor", function () {
+    it("should be a constructor.", function () {
         expect((new Applait.Finder()) instanceof Applait.Finder).toBe(true);
     });
 
