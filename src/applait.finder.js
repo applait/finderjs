@@ -88,7 +88,7 @@ Applait.Finder.prototype = new EventEmitter();
 /**
  * Match hidden files based on settings
  *
- * @param {string} filename - The filename to test
+ * @param {string} fullpath - The full path to the file including the file name, from `file.name`.
  * @return {boolean} - `true` if file is a hidden file and if `hidden`
  * is `true` in constructor options.
  */
