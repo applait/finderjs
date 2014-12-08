@@ -89,8 +89,14 @@ Applait.Finder.prototype = new EventEmitter();
  * Match hidden files based on settings
  *
  * @param {string} fullpath - The full path to the file including the file name, from `file.name`.
- * @return {boolean} - `true` if file is a hidden file and if `hidden`
- * is `true` in constructor options.
+ * @return {boolean} - Returns `true` if:
+ * - `this.hidden` is `true` and filepath contains hidden elements or not
+ * - `this.hidden` is `false` and filepath does not contain hidden elements
+ *
+ * Returns `false` if:
+ * - `this.hidden` is `false` and filepath contains hidden elements
+ *
+ * Hidden elements are identified as a folder name in the path or the file name beginning with a dot.
  */
 Applait.Finder.prototype.checkhidden = function (fullpath) {
     if (fullpath[fullpath.indexOf(".") - 1] === "/" && this.hidden !== true) {
