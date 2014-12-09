@@ -102,3 +102,57 @@ describe("Applait.Finder.prototype.log method", function () {
     });
 
 });
+
+describe("Applait.Finder.prototype.matchname method", function () {
+
+    describe("searchkey matches and this.checkhidden() is true/false", function () {
+
+        var finder = new Applait.Finder();
+        finder.searchkey = "Aa";
+        finder.casesensitive = true;
+
+        it("should return true if this.checkhidden() is true", function (){
+            finder.checkhidden = function () {
+                return true;
+            };
+            var matchname = finder.matchname("Aa.jpg", "/sdcard/DCIM/100MZLLA/Aa.jpg");
+
+            expect(matchname).toBe(true);
+        });
+
+        it("should retun false if this.checkhidden() is false", function (){
+            finder.checkhidden = function () {
+                return false;
+            };
+            var matchname = finder.matchname(".Aa.jpg", "/sdcard/DCIM/100MZLLA/.Aa.jpg");
+
+            expect(matchname).toBe(false);
+        });
+
+    });
+
+    describe("this.casesensitive is true/false", function () {
+
+        var finder = new Applait.Finder();
+        finder.searchkey = "fb";
+        finder.checkhidden = function () {
+            return true;
+        };
+
+        it("should return false if this.casesensitive is true", function (){
+            finder.casesensitive = true;
+            var matchname = finder.matchname("FB.jpg", "/sdcard/DCIM/100MZLLA/FB.jpg");
+
+            expect(matchname).toBe(false);
+        });
+
+        it("should retun true if this.casesensitive is false", function (){
+            finder.casesensitive = false;
+            var matchname = finder.matchname("FB.jpg", "/sdcard/DCIM/100MZLLA/FB.jpg");
+
+            expect(matchname).toBe(true);
+        });
+
+    });
+
+});
