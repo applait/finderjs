@@ -48,3 +48,22 @@ describe("Applait.Finder.prototype.checkhidden method", function() {
     });
 
 });
+
+describe("Applait.Finder.prototype reset function", function () {
+
+    var finder = new Applait.Finder();
+
+    /* Assigning garbage values */
+    finder.filematchcount = 25;
+    finder.searchcompletecount = 10;
+    finder.searchkey = "jpg";
+
+    finder.reset();
+
+    it("reset function cleans up data properly", function() {
+        expect(finder.filematchcount).toBe(0);
+        expect(finder.searchcompletecount).toBe(0);
+        expect(finder.searchkey).toBe("");
+    });
+
+});
