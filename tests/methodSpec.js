@@ -48,3 +48,57 @@ describe("Applait.Finder.prototype.checkhidden method", function() {
     });
 
 });
+
+describe("Applait.Finder.prototype.log method", function () {
+
+    var finder;
+
+    beforeEach(function () {
+        finder = new Applait.Finder();
+    });
+
+    describe("log method takes two argument", function () {
+
+        it("finder.log.length should return 2", function (){
+            expect(finder.log.length).toBe(2);
+        });
+
+    });
+
+    describe("this.debugmode is true", function () {
+
+        beforeEach(function () {
+            finder.debugmode = true;
+            spyOn(console, 'log');
+            finder.log("number", [1,2,3]);
+        });
+
+        it("console.log should have been called", function (){
+            expect(console.log).toHaveBeenCalled();
+        });
+
+        it("console.log should print both argument", function (){
+            expect(console.log).toHaveBeenCalledWith("number", [1,2,3]);
+        });
+
+    });
+
+    describe("this.debugmode is false", function () {
+
+        beforeEach(function () {
+            finder.debugmode = false;
+            spyOn(console, 'log');
+            finder.log("number", [3,4,5]);
+        });
+
+        it("console.log should not called", function (){
+            expect(console.log).not.toHaveBeenCalled();
+        });
+
+        it("console.log should not print any argument", function (){
+            expect(console.log).not.toHaveBeenCalledWith("number", [3,4,5]);
+        });
+
+    });
+
+});
