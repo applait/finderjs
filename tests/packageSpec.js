@@ -58,4 +58,49 @@ describe("Package", function () {
         expect(minversion).toBe(packagejson.version.toString());
     });
 
+    // Test package.json integrity
+    it("definition file, package.json should have proper data.", function () {
+
+        expect(packagejson).toEqual({
+            "name": "finderjs",
+            "version": "1.1.3",
+            "description": "Device Storage search and file picker library for Firefox OS",
+            "main": "src/applait.finder.js",
+            "directories": {
+                "doc": "docs"
+            },
+            "repository": {
+                "type": "git",
+                "url": "git://github.com/applait/finderjs.git"
+            },
+            "keywords": [
+                "firefoxos",
+                "devicestorage"
+            ],
+            "author": {
+                "name": "Applait Technologies LLP",
+                "email": "ask@applait.com",
+                "url": "http://applait.com"
+            },
+            "license": "MIT",
+            "readmeFilename": "README.md",
+            "bugs": {
+                "url": "https://github.com/applait/finderjs/issues"
+            },
+            "devDependencies": {
+                "grunt": "~0.4.5",
+                "grunt-contrib-jshint": "~0.10.0",
+                "grunt-contrib-uglify": "~0.5.0",
+                "grunt-jsdoc": "~0.6.1",
+                "grunt-contrib-jasmine": "~0.8.1",
+                "grunt-contrib-connect": "~0.9.0"
+            },
+            "scripts": {
+                "test": "grunt test",
+                "build": "grunt build"
+            }
+        });
+    });
+
+
 });
