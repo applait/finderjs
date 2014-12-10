@@ -3,13 +3,22 @@ module.exports = function (grunt) {
     // Project configuration
     grunt.initConfig({
 
+        connect: {
+            server: {
+                options: {
+                    port: "9001"
+                }
+            }
+        },
+
         jasmine: {
             src: [
                 "src/libs/EventEmitter.js",
                 "src/applait.finder.js"
             ],
             options: {
-                specs: "tests/*Spec.js"
+                specs: "tests/*Spec.js",
+                host: "http://127.0.0.1:9001"
             }
         },
 
@@ -49,9 +58,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-jsdoc");
+    grunt.loadNpmTasks("grunt-contrib-connect");
 
     // Register tests
-    grunt.registerTask("test", ["jshint", "jasmine"]);
+    grunt.registerTask("test", ["connect", "jshint", "jasmine"]);
 
     // Register docs
     grunt.registerTask("docs", ["jsdoc"]);
