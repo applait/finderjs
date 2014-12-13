@@ -1,4 +1,4 @@
-describe("Applait.Finder.prototype splitname function", function () {
+describe("Applait.Finder.prototype.splitname method", function () {
 
     var finder = new Applait.Finder();
     var splitname = finder.splitname("/sdcard/DCIM/100MZLLA/1.jpg");
