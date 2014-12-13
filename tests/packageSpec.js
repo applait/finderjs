@@ -1,3 +1,4 @@
+/* jshint jasmine: true */
 describe("Package", function () {
 
     var request = new XMLHttpRequest(),

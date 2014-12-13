@@ -1,3 +1,5 @@
+/* jshint jasmine: true */
+/* global Applait */
 describe("Applait.Finder class", function () {
 
     var finder;

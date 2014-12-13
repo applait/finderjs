@@ -1,3 +1,5 @@
+/* jshint jasmine: true */
+/* global Applait */
 describe("Applait.Finder.prototype.splitname method", function () {
 
     var finder = new Applait.Finder();
