@@ -23,7 +23,7 @@ module.exports = function (grunt) {
         },
 
         jshint: {
-            all: ["src/applait.finder.js"],
+            all: ["src/applait.finder.js", "tests/*.js"],
             options: {
                 jshintrc: ".jshintrc"
             }
