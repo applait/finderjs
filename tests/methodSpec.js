@@ -71,7 +71,7 @@ describe("Applait.Finder.prototype.log method", function () {
 
         beforeEach(function () {
             finder.debugmode = true;
-            spyOn(console, 'log');
+            spyOn(console, "log");
             finder.log("number", [1,2,3]);
         });
 
@@ -89,7 +89,7 @@ describe("Applait.Finder.prototype.log method", function () {
 
         beforeEach(function () {
             finder.debugmode = false;
-            spyOn(console, 'log');
+            spyOn(console, "log");
             finder.log("number", [3,4,5]);
         });
 
