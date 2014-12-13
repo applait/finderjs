@@ -156,3 +156,24 @@ describe("Applait.Finder.prototype.matchname method", function () {
     });
 
 });
+
+describe("Applait.Finder.prototype.storagecount method", function () {
+
+    var finder = new Applait.Finder();
+
+    it("should return exact number of current device storages", function () {
+        // Try with 2 dummy elements as storages
+        finder.storages = ["sdcard", "sdcard1"];
+        expect(finder.storagecount()).toBe(2);
+
+        // If `this,storages` is empty, it should be 0
+        finder.storages = [];
+        expect(finder.storagecount()).toBe(0);
+
+    });
+
+    it("should return 0 if navigator.getDeviceStorages is not available", function () {
+        finder.storages = undefined;
+        expect(finder.storagecount()).toBe(0);
+    });
+});
