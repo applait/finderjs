@@ -5,11 +5,11 @@ describe("Applait.Finder.prototype.splitname method", function () {
     var finder = new Applait.Finder();
     var splitname = finder.splitname("/sdcard/DCIM/100MZLLA/1.jpg");
 
-    it("it should have the basename of the file with extension ", function (){
+    it("should have the basename of the file with extension ", function (){
         expect(splitname.name).toBe("1.jpg");
     });
 
-    it("it should have path to the file's directory", function (){
+    it("should have path to the file's directory", function (){
         expect(splitname.path).toBe("/sdcard/DCIM/100MZLLA");
     });
 });
@@ -59,15 +59,11 @@ describe("Applait.Finder.prototype.log method", function () {
         finder = new Applait.Finder();
     });
 
-    describe("log method takes two argument", function () {
-
-        it("finder.log.length should return 2", function (){
-            expect(finder.log.length).toBe(2);
-        });
-
+    it("should take 2 arguments", function (){
+        expect(finder.log.length).toBe(2);
     });
 
-    describe("this.debugmode is true", function () {
+    describe("when this.debugmode is true", function () {
 
         beforeEach(function () {
             finder.debugmode = true;
@@ -75,17 +71,17 @@ describe("Applait.Finder.prototype.log method", function () {
             finder.log("number", [1,2,3]);
         });
 
-        it("console.log should have been called", function (){
+        it("should log to browser console using console.log", function (){
             expect(console.log).toHaveBeenCalled();
         });
 
-        it("console.log should print both argument", function (){
+        it("should print both arguments using console.log", function (){
             expect(console.log).toHaveBeenCalledWith("number", [1,2,3]);
         });
 
     });
 
-    describe("this.debugmode is false", function () {
+    describe("when this.debugmode is false", function () {
 
         beforeEach(function () {
             finder.debugmode = false;
@@ -93,11 +89,11 @@ describe("Applait.Finder.prototype.log method", function () {
             finder.log("number", [3,4,5]);
         });
 
-        it("console.log should not called", function (){
+        it("should not log to browser console using console.log", function (){
             expect(console.log).not.toHaveBeenCalled();
         });
 
-        it("console.log should not print any argument", function (){
+        it("should not print both arguments using console.log", function (){
             expect(console.log).not.toHaveBeenCalledWith("number", [3,4,5]);
         });
 
@@ -107,7 +103,7 @@ describe("Applait.Finder.prototype.log method", function () {
 
 describe("Applait.Finder.prototype.matchname method", function () {
 
-    describe("searchkey matches and this.checkhidden() is true/false", function () {
+    describe("when searchkey matches and this.checkhidden() is true/false", function () {
 
         var finder = new Applait.Finder();
         finder.searchkey = "Aa";
@@ -122,7 +118,7 @@ describe("Applait.Finder.prototype.matchname method", function () {
             expect(matchname).toBe(true);
         });
 
-        it("should retun false if this.checkhidden() is false", function (){
+        it("should return false if this.checkhidden() is false", function (){
             finder.checkhidden = function () {
                 return false;
             };
@@ -133,7 +129,7 @@ describe("Applait.Finder.prototype.matchname method", function () {
 
     });
 
-    describe("this.casesensitive is true/false", function () {
+    describe("when this.casesensitive is true/false", function () {
 
         var finder = new Applait.Finder();
         finder.searchkey = "fb";
@@ -148,7 +144,7 @@ describe("Applait.Finder.prototype.matchname method", function () {
             expect(matchname).toBe(false);
         });
 
-        it("should retun true if this.casesensitive is false", function (){
+        it("should return true if this.casesensitive is false", function (){
             finder.casesensitive = false;
             var matchname = finder.matchname("FB.jpg", "/sdcard/DCIM/100MZLLA/FB.jpg");
 
