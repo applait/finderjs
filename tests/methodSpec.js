@@ -175,23 +175,23 @@ describe("Applait.Finder.prototype.storagecount method", function () {
         expect(finder.storagecount()).toBe(0);
     });
 
-    describe("Applait.Finder.prototype reset function", function () {
+});
 
-        var finder = new Applait.Finder();
+describe("Applait.Finder.prototype.reset method", function () {
 
-        /* Assigning garbage values */
-        finder.filematchcount = 25;
-        finder.searchcompletecount = 10;
-        finder.searchkey = "jpg";
+    var finder = new Applait.Finder();
 
-        finder.reset();
+    /* Assigning garbage values */
+    finder.filematchcount = 25;
+    finder.searchcompletecount = 10;
+    finder.searchkey = "jpg";
 
-        it("reset function cleans up data properly", function() {
-            expect(finder.filematchcount).toBe(0);
-            expect(finder.searchcompletecount).toBe(0);
-            expect(finder.searchkey).toBe("");
-        });
+    finder.reset();
 
+    it("should clean up data properly", function() {
+        expect(finder.filematchcount).toBe(0);
+        expect(finder.searchcompletecount).toBe(0);
+        expect(finder.searchkey).toBe("");
     });
 
 });
