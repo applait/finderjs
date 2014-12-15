@@ -206,6 +206,8 @@ Here are some useful properties of the `Applait.Finder` class:
 
 ## Contributing
 
+Read the [CONTRIBUTORS.md](CONTRIBUTORS.md) file to know coding styles and conventions.
+
 What you need to start developing FinderJS:
 
 - [npm](http://npmjs.org)
