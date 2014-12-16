@@ -82,6 +82,16 @@ done, we have come up with the following plans:
 - We will write code that is beautiful.
 ```
 
+### Lint your code
+
+JSHint is used for JavaScript linting. Check the [.jshintrc](.jshintrc) file to see the options used.
+
+Before you make a commit, run the following code to ensure the lint passes and all tests are successful:
+
+```shell
+$ npm test
+```
+
 ## Pull requests
 
 - Ensure that you have worked on the latest code to avoid re-introducing removed diffs.
