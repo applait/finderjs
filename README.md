@@ -206,40 +206,7 @@ Here are some useful properties of the `Applait.Finder` class:
 
 ## Contributing
 
-Read the [CONTRIBUTORS.md](CONTRIBUTORS.md) file to know coding styles and conventions.
-
-What you need to start developing FinderJS:
-
-- [npm](http://npmjs.org)
-- [grunt](http://gruntjs.com)
-- [git](http://git-scm.com)
-- A text editor
-
-### Dev environment setup
-
-Install `npm` and run:
-
-```bash
-$ npm install -g grunt-cli
-```
-
-```bash
-$ npm install
-```
-
-### Run tests and create builds
-
-To run tests:
-
-```bash
-$ npm test
-```
-
-To create minified file and generate API docs:
-
-```bash
-$ npm run build
-```
+Read the [CONTRIBUTORS.md](CONTRIBUTORS.md) file to know setup instructions, coding styles and conventions.
 
 ## Credits and attribution
 
