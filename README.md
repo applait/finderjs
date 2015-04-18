@@ -1,6 +1,6 @@
 # Finder library for Firefox OS
 
-[![Build Status](https://travis-ci.org/applait/finderjs.svg?branch=master)](https://travis-ci.org/applait/finderjs)
+[![JS.ORG](https://img.shields.io/badge/js.org-finder-ffb400.svg?style=flat)](http://js.org) [![Build Status](https://travis-ci.org/applait/finderjs.svg?branch=master)](https://travis-ci.org/applait/finderjs)
 
 This library is an interface to search and pick files from the `DeviceStorages` on Firefox OS devices. It provides an easy-to-use asynchronous interface for other Firefox OS apps to search for files on Firefox OS devices. The library is based on an event-based architecture, letting developers build beautiful asynchronous API for their apps.
 
